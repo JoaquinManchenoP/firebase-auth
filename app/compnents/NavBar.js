@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import { userAuth } from "../context/AuthContext";
+import { redirect } from "next/navigation";
 
 export default function NavBar() {
   const { user, googleSignIn, logOut } = userAuth();
   const [loading, setLoading] = useState(true);
-  console.log(user);
 
   const handleSignIn = async () => {
     try {
@@ -25,7 +25,7 @@ export default function NavBar() {
 
   useEffect(() => {
     const checkAuthentication = async () => {
-      await new Promise((resolve) => setTimeout(resolve, 330));
+      await new Promise((resolve) => setTimeout(resolve, 275));
       setLoading(false);
     };
     checkAuthentication();
@@ -34,7 +34,7 @@ export default function NavBar() {
   return (
     <div className="h-20 w-full bg-red-900 flex justify-between p-4 ">
       <div className="routes space-x-3">
-        <Link href="/">Home</Link>
+        <Link href={"/"}>Home</Link>
         {!user ? <div></div> : <Link href="/userProfile">profile</Link>}
       </div>
       {loading ? null : !user ? (

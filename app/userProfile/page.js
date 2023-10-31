@@ -1,6 +1,7 @@
 "use client";
 import React, { useEffect, useState } from "react";
 import { userAuth } from "../context/AuthContext";
+import { redirect } from "next/navigation";
 
 export default function page() {
   const [loading, setLoading] = useState(true);
